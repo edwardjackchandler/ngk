@@ -33,7 +33,7 @@ def create_inner_string(inner_params):
     Returns:
         string -- parameters in string form 
     """
-    print("inner_params", inner_params)
+    #print("inner_params", inner_params)
     inner = inner_params.copy()
 
     inner["year_range"] = ",".join(inner["year_range"])
@@ -71,11 +71,12 @@ def create_query_dict(inner_params, country_list, sort_by, pages, andor):
         "sa": andor
     }
 
-    print(params)
+    #print(params)
 
     return params
 
 
-def call_api(params):
+def get_unogs_json(params):
     response = requests.get(get_nfapi_details("url"), headers=get_nfapi_details("headers"), params=params)
-    return response.text
+    return response.json()
+

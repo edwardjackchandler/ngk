@@ -1,7 +1,21 @@
-import unogs_wrapper as nat
+import unogs_wrapper as unw
+from elasticsearch import Elasticsearch
+
+es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+
+us_uk_params = {
+    "q":"-!1900,2018-!0,5-!0,10-!0-!Any-!Any-!Any-!gt100-!",
+    "t":"ns",
+    "cl":"46,78",
+    "st":"adv",
+    "ob":"Title",
+    "p":"1",
+    "sa":"and"
+}
+
 
 inner = {
-    "search_string": "",
+    "search_string": "Breaking Bad",
     "year_range": ["1900", "2018"],
     "nf_rating_range": ["0", "5"],
     "imdb_rating_range": ["0", "10"],
@@ -13,7 +27,7 @@ inner = {
     "downloadable": ""
 }
 
-params = {
+uk_params = {
     "q":"-!1900,2018-!0,5-!0,10-!0-!Any-!Any-!Any-!gt100-!",
     "t":"ns",
     "cl":"46,78",
@@ -28,4 +42,5 @@ headers = {
     'accept': "application/json"
 }
 
-print(nat.call_api(nat.create_query_dict(inner, ["46","78"], "Title", 1, "and")))
+print(unw.call_api(unw.create_query_dict(inner, ["46"], "Title", 1, "and")))
+#print(unw.call_api(unw.create_query_dict(inner, ["46","78"], "Title", 1, "and")))
