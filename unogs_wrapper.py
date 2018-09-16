@@ -25,7 +25,7 @@ def get_nfapi_details(param):
 
 
 def create_inner_string(inner_params):
-    """convert parameters from paramater into correct string format for api
+    """convert parameters to correct string format for api
     
     Arguments:
         inner_params {dictionary} -- inner parameters
@@ -41,7 +41,6 @@ def create_inner_string(inner_params):
     inner["imdb_rating_range"] = ",".join(inner["imdb_rating_range"])
     
     inner_string = "-!".join(list(inner.values()))
-
 
     return inner_string
 
@@ -80,3 +79,11 @@ def get_unogs_json(params):
     response = requests.get(get_nfapi_details("url"), headers=get_nfapi_details("headers"), params=params)
     return response.json()
 
+'''
+def parse_unogs_json(unogs_json):
+    unogs_dict = json.load(unogs_json)
+    
+    nfobject_list
+
+    return nfobject_list
+'''
