@@ -1,0 +1,9 @@
+{  
+    "nfapi": {
+        "url": "https://unogs-unogs-v1.p.mashape.com/aaapi.cgi",
+        "headers": {
+            "x-mashape-key": "WwhkdSlflnmsh5zyLzm2gI0AyBrHp1DIWznjsnBSVWeL0TkpPG",
+            "accept": "application/json"
+        }   
+    }
+}
