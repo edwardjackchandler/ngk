@@ -83,19 +83,25 @@ class UnogsQuery:
             "_type": "nfobject"
         }
 
+        title_list = []
+
         for nfobject in self.nfobjects:
             ingest_dict = es_dict_template.copy()
 
             nfobject["title"] = parser.unescape(nfobject["title"])
-            nfobject["synopsis"] = parser.unescape(nfobject["synopsis"])
+            title_list.append(nfobject["title"])
 
-            print(nfobject["synopsis"])
+            nfobject["synopsis"] = parser.unescape(nfobject["synopsis"])
 
             ingest_dict.update(nfobject)
 
             ingest_list.append(ingest_dict)
-
+    
         helpers.bulk(self.es, ingest_list)
+
+        print("Objects ingested")
+        print("Title list")
+        print(title_list)
 
     '''
     def parse_nfobjects(object_list):

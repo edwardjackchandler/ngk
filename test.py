@@ -55,4 +55,4 @@ first_query = UnogsQuery(search_string="Breaking Bad", year_range=["1900", "2018
 print(first_query.query_count)
 print(first_query.nfobjects)
 
-first_query.es_ingest_objects()
+#first_query.es_ingest_objects()
