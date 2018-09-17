@@ -5,5 +5,9 @@
             "x-mashape-key": "WwhkdSlflnmsh5zyLzm2gI0AyBrHp1DIWznjsnBSVWeL0TkpPG",
             "accept": "application/json"
         }   
+    },
+    "elastic": {
+        "host": "localhost",
+        "port": "9300"
     }
 }

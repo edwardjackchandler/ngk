@@ -69,8 +69,8 @@ class UnogsQuery:
         self.nfobjects = self.query_json["ITEMS"]
         #self.nfobjects = parse_nfobjects(self.query_json["ITEMS"])
 
-        if elastic is not None:
-            self.es = elastic
+        if unw.get_elastic_details:
+            self.es = Elasticsearch([unw.get_elastic_details()])
             # self.es_dict_template = es_dict_template
 
 
@@ -96,7 +96,6 @@ class UnogsQuery:
             ingest_list.append(ingest_dict)
 
         helpers.bulk(self.es, ingest_list)
-
 
     '''
     def parse_nfobjects(object_list):

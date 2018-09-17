@@ -24,6 +24,11 @@ def get_nfapi_details(param):
     return config_dict["nfapi"][param]
 
 
+def get_elastic_details():
+    config_dict = read_config("C:/Users/jchandler/Documents/Website/ngk/ngk/config.json")
+    return config_dict["elastic"]
+
+
 def create_inner_string(inner_params):
     """convert parameters to correct string format for api
     
