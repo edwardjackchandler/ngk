@@ -64,9 +64,22 @@ class UnogsQuery:
         }
 
         params_dict = unw.create_query_dict(inner_params, country_list, sort_by, pages, andor)
+
         self.query_json = unw.get_unogs_json(params_dict)
         self.query_count = self.query_json["COUNT"]
         self.nfobjects = self.query_json["ITEMS"]
+
+        if len(country_list) == 1:
+            print(type(country_list))
+
+            for nfobject_dict in self.nfobjects:
+                nfobject_dict["country_code"] = country_list[0]
+                
+                if country_list[0] == "46":
+                    nfobject_dict["country"] = "uk"
+                elif country_list[0] == "78":
+                    nfobject_dict["country"] = "usa"
+
         #self.nfobjects = parse_nfobjects(self.query_json["ITEMS"])
 
         if unw.get_elastic_details:
@@ -88,15 +101,15 @@ class UnogsQuery:
         for nfobject in self.nfobjects:
             ingest_dict = es_dict_template.copy()
 
-            nfobject["title"] = parser.unescape(nfobject["title"])
             title_list.append(nfobject["title"])
 
+            nfobject["title"] = parser.unescape(nfobject["title"])
             nfobject["synopsis"] = parser.unescape(nfobject["synopsis"])
 
             ingest_dict.update(nfobject)
 
             ingest_list.append(ingest_dict)
-    
+
         helpers.bulk(self.es, ingest_list)
 
         print("Objects ingested")

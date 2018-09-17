@@ -41,6 +41,12 @@ nfobject_mappings = {
                 },
                 "download": {
                     "type": "boolean"
+                },
+                "country_code": {
+                    "type": "keyword"
+                },
+                "country": {
+                    "type": "keyword"
                 }
             }
         }

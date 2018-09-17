@@ -81,7 +81,13 @@ def create_query_dict(inner_params, country_list, sort_by, pages, andor):
 
 
 def get_unogs_json(params):
+    #TODO requests.exceptions.ConnectionError
     response = requests.get(get_nfapi_details("url"), headers=get_nfapi_details("headers"), params=params)
+
+    #try:
+
+    #except :
+
     return response.json()
 
 '''
