@@ -101,10 +101,11 @@ class UnogsQuery:
         for nfobject in self.nfobjects:
             ingest_dict = es_dict_template.copy()
 
-            title_list.append(nfobject["title"])
 
             nfobject["title"] = parser.unescape(nfobject["title"])
             nfobject["synopsis"] = parser.unescape(nfobject["synopsis"])
+
+            title_list.append(nfobject["title"])
 
             ingest_dict.update(nfobject)
 

@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 
 #{query}-!{syear},{eyear}-!{snfrate},{enfrate}-!{simdbrate},{eimdbrate}-!{genreid}-!{vtype}-!{audio}-!{subtitle}-!{imdbvotes}-!{downloadable}&t=ns&cl={clist}&st=adv&ob={sortby}&p={page}&sa={andor}
 #create_query_dict(inner, ["46", "78"], "Title", 1, "andor")
@@ -89,6 +90,15 @@ def get_unogs_json(params):
     #except :
 
     return response.json()
+
+
+'''
+def write_api_limits(api_limits_dict, loc="api_limits.json"):
+    with open(loc) as f:
+        writer =
+'''
+
+#def get_api_limits()
 
 '''
 def parse_unogs_json(unogs_json):

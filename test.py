@@ -2,7 +2,6 @@ import unogs_wrapper as unw
 from unogs_query import UnogsQuery
 from elasticsearch import Elasticsearch
 
-
 es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
 us_uk_params = {
